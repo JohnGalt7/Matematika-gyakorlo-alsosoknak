@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math for kids</title>
+    <link rel="stylesheet" href="sytlesheet.css" />
+  </head>
+  <body>
+    <section class="error_msg hidden">
+      <div class="error_field">
+        <p class="error error1">Hibaüzenet 1</p>
+      </div>
+      <div><button class="error_back">Vissza</button></div>
+    </section>
+    <section class="playfield hidden">
+      <div class="emoticons">Gyakorlat teszi a mestert!</div>
+      <section class="arithm_example hidden">
+        <div class="arithm_window">
+          <p class="inline" id="first_num">_</p>
+          <p class="inline type_signal">?</p>
+          <p class="inline" id="second_num">_</p>
+          <p class="inline">=</p>
+          <input type="number" class="user_input" id="arithm_input" />
+          <p class="rem_text hidden">Maradék:</p>
+          <input type="number" class="user_input rem_input hidden" id="arithm_rem_input" />
+        </div>
+      </section>
+      <section class="text_example hidden">
+        <div class="text_module_3line hidden">
+          <span class="text_line" id="t1">szöveg</span>
+          <span class="text_line" id="num1">szám</span>
+          <span class="text_line" id="t2">szöveg</span>
+          <br />
+          <span class="text_line" id="t3">szöveg</span>
+          <span class="text_line" id="num2">szám</span>
+          <span class="text_line" id="t4">szöveg</span>
+          <br />
+          <span class="text_line" id="t5">kérdés</span>
+          <input type="number" class="text_inp" id="text_input" />
+          <section class="text_rem">
+            <span class="text_line" id="t6"></span>
+            <span><input type="number" class="text_rem_inp" id="text_rem_input" /></span>
+          </section>
+        </div>
+        <div class="text_module_2line hidden">
+          <span class="text_line" id="t1">szöveg</span>
+          <span class="text_line" id="num1">szám</span>
+          <span class="text_line" id="t2">szöveg</span>
+          <br />
+          <span class="text_line" id="t3">kérdés</span>
+          <span class="text_line" id="t4">szöveg</span>
+          <span class="text_line" id="num2">szám</span>
+          <span class="text_line" id="t5">szöveg</span>
+          <br />
+          <input type="number" class="text_inp" id="text_input" />
+        </div>
+      </section>
+      <section class="machine_example hidden">
+        <div class="machine_window">
+          <table>
+            <tr>
+              <td>🟢</td>
+              <td class="r1e1">num</td>
+              <td class="r1e2">num</td>
+              <td class="r1e3">num</td>
+              <td class="r1e4"><input type="number" class="machine_input" id="mi1" /></td>
+              <td class="r1e5"><input type="number" class="machine_input" id="mi2" /></td>
+              <td class="r1e6"><input type="number" class="machine_input" id="mi3" /></td>
+              <td class="r1e7"><input type="number" class="machine_input" id="mi4" /></td>
+              <td class="r1e8"><input type="number" class="machine_input" id="mi5" /></td>
+              <td class="r1e9"><input type="number" class="machine_input" id="mi6" /></td>
+            </tr>
+            <tr>
+              <td>🟨</td>
+              <td class="r2e1">num</td>
+              <td class="r2e2">num</td>
+              <td class="r2e3">num</td>
+              <td class="r2e4">num</td>
+              <td class="r2e5">num</td>
+              <td class="r2e6">num</td>
+              <td class="r2e7">num</td>
+              <td class="r2e8">num</td>
+              <td class="r2e9">num</td>
+            </tr>
+            <tr>
+              <td>🔺</td>
+              <td class="r3e1">num</td>
+              <td class="r3e2">num</td>
+              <td class="r3e3">num</td>
+              <td class="r3e4">num</td>
+              <td class="r3e5">num</td>
+              <td class="r3e6">num</td>
+              <td class="r3e7">num</td>
+              <td class="r3e8">num</td>
+              <td class="r3e9">num</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <section class="button_section">
+        <span></span>
+        <span></span>
+        <div>
+          <button class="ingame" id="new">Új feladat</button>
+          <button class="ingame" id="check">Ellenőrzés</button>
+          <!-- <button id="rst">Reset</button> -->
+        </div>
+        <div>
+          <button class="back">Kilépés</button>
+        </div>
+        <span></span>
+      </section>
+      <section class="extra">
+        <section class="rainbow_edge">
+          <section class="stats">
+            <span>Helyes válaszok:</span>
+            <span class="total">0</span>
+          </section>
+        </section>
+        <section class="spacer s_one"></section>
+        <section class="owl_figure">
+          <div class="mini-owl">
+            <div class="body">
+              <div class="belly"></div>
+              <div class="eye left-eye"></div>
+              <div class="eye right-eye"></div>
+              <div class="beak"></div>
+            </div>
+            <div class="wings left-wing"></div>
+            <div class="wings right-wing"></div>
+
+            <div class="left-foot"></div>
+            <div class="right-foot"></div>
+          </div>
+        </section>
+        <section class="spacer s_two"></section>
+      </section>
+    </section>
+
+    <section class="options_field">
+      <header class="main_header">* * * MATEK GYAKORLÓ ALSÓSOKNAK * * *</header>
+      <!-- The playfield of the examples, originally hidden -->
+      <section class="selectors">
+        <!-- Fő opciók a feladat típusára -->
+        <fieldset class="type_of_math">
+          <legend>Feladatok típusa</legend>
+          <div>
+            <span>Feladat(ok) kiválasztása:</span>
+            <input type="checkbox" class="main_selector type_add" value="Összeadás" id="op1" />
+            <label for="op1">Összeadás</label>
+            <input type="checkbox" class="main_selector type_sub" value="Kivonás" id="op2" />
+            <label for="op2">Kivonás</label>
+            <input type="checkbox" class="main_selector type_mult" value="Szorzás" id="op3" />
+            <label for="op3">Szorzás</label>
+            <input type="checkbox" class="main_selector type_div" value="Osztás" id="op4" />
+            <label for="op4">Osztás</label>
+            <input
+              type="checkbox"
+              class="main_selector type_div_rem"
+              value="Maradékos osztás"
+              id="op5"
+            />
+            <label for="op5">Maradékos osztás</label>
+          </div>
+          <div class="radio_order">
+            <span>Megjelenésük sorrendje:</span>
+            <input
+              type="radio"
+              class="main_selector in_order"
+              name="order_radio"
+              value="order"
+              id="op_ord"
+              checked="true"
+            />
+            <label for="op_ord">Sorrendben</label>
+            <input
+              type="radio"
+              class="main_selector in_random"
+              name="order_radio"
+              value="random"
+              id="op_rnd"
+            />
+            <label for="op_rnd">Véletlenszerűen</label>
+          </div>
+          <div>
+            <button type="submit" class="sub1">Rögzít</button>
+            <button type="reset" class="reset1">Töröl</button>
+          </div>
+          <!-- A gombokat át kell majd nevezni TODO -->
+        </fieldset>
+        <!-- Fő opciók a feladat fajtájára -->
+        <fieldset class="type_of_examples">
+          <legend>Feladatok jellege</legend>
+          <p>Feladat formájának kiválasztása:</p>
+          <div>
+            <input
+              type="radio"
+              name="example_type"
+              class="main_selector form_norm"
+              id="op6"
+              value="arithmetics"
+              checked="true"
+            />
+            <label id="form_label1" for="op6">Aritmetikai művelet</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="example_type"
+              class="main_selector form_text"
+              id="op7"
+              value="text"
+            />
+            <label id="form_label2" for="op7">Szöveges feladat</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="example_type"
+              class="main_selector form_mach"
+              id="op8"
+              value="machine"
+            />
+            <label id="form_label3" for="op8">Gépjáték</label>
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <div>
+            <button type="submit" class="sub2">Rögzít</button>
+            <button type="reset" class="reset2">Töröl</button>
+          </div>
+        </fieldset>
+      </section>
+      <section class="options">
+        <!-- Al-opciók az összeadás - kivonás beállítására -->
+        <fieldset class="add_sub_op">
+          <legend>Összeadás és kivonás beállítások</legend>
+          <div class="quick_op_add_sub">
+            <p>Gyorsbeállítás</p>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub1" id="addop1" value="0,10" />
+              <label for="addop1">0 - 10</label>
+            </div>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub2" id="addop2" value="0,20" />
+              <label for="addop2">0 - 20</label>
+            </div>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub3" id="addop3" value="0,50" />
+              <label for="addop3">0 - 50</label>
+            </div>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub4" id="addop4" value="50,100" />
+              <label for="addop4">50 - 100</label>
+            </div>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub5" id="addop5" value="0,100" />
+              <label for="addop5">0 - 100</label>
+            </div>
+            <div>
+              <input type="radio" name="add_sub_input" class="addsub6" id="addop6" value="-10,10" />
+              <label for="addop6">-10 - 10</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="add_sub_input"
+                class="addsub7"
+                id="addop7"
+                value="-100,100"
+              />
+              <label for="addop7">-100 - 100</label>
+            </div>
+          </div>
+          <div class="manual_op_add_sub">
+            <div>
+              <p id="manual_text">Kézi beállítás</p>
+              <div>
+                <label id="min_value_text" for="op_min">Minimum érték:</label>
+                <input type="number" class="op_min" id="op_min" min="-1000" max="1000" />
+              </div>
+              <div>
+                <label for="op_max">Maximum érték:</label>
+                <input type="number" class="op_max" id="op_max" min="-1000" max="1000" />
+              </div>
+            </div>
+            <div class="add_sub_btns">
+              <button type="submit" class="sub3">Rögzít</button>
+              <button type="reset" class="reset3">Töröl</button>
+            </div>
+          </div>
+        </fieldset>
+        <!-- Al-opciók a szorzás - osztás beállítására -->
+        <fieldset class="mult_div_op">
+          <legend>Szorzás és osztás beállítások</legend>
+          <div class="mult_quick">
+            <p>Gyorsbeállítás</p>
+            <div>
+              <input
+                type="radio"
+                class="multdivrad1"
+                name="mult_div_radio"
+                id="manu1"
+                value="1,2,3,4,5,6,7,8,9,10"
+              />
+              <label for="manu1">Minden szorzótábla</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                class="multdivrad2"
+                name="mult_div_radio"
+                id="manu2"
+                value="2,3,4,5,6,7,8,9"
+              />
+              <label for="manu2">2 - 9</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                class="multdivrad3"
+                name="mult_div_radio"
+                id="manu3"
+                value="1,2,3,4,5"
+              />
+              <label for="manu3">1 - 5</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                class="multdivrad4"
+                name="mult_div_radio"
+                id="manu4"
+                value="6,7,8,9,10"
+              />
+              <label for="manu4">6 - 10</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                class="multdivrad5"
+                name="mult_div_radio"
+                id="manu5"
+                value="3,4,6,7,8"
+              />
+              <label for="manu5">3, 4, 6, 7, 8</label>
+            </div>
+          </div>
+          <div class="mult_manual">
+            <p>Kézi beállítások</p>
+            <div>
+              <input type="checkbox" class="mult_div multdiv1" id="quick1" value="1" />
+              <label for="quick1">Egyes szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv2" id="quick2" value="2" />
+              <label for="quick2">Kettes szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv3" id="quick3" value="3" />
+              <label for="quick3">Hármas szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv4" id="quick4" value="4" />
+              <label for="quick4">Négyes szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv5" id="quick5" value="5" />
+              <label for="quick5">Ötös szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv6" id="quick6" value="6" />
+              <label for="quick6">Hatos szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv7" id="quick7" value="7" />
+              <label for="quick7">Hetes szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv8" id="quick8" value="8" />
+              <label for="quick8">Nyolcas szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv9" id="quick9" value="9" />
+              <label for="quick9">Kilences szorzó</label>
+            </div>
+            <div>
+              <input type="checkbox" class="mult_div multdiv10" id="quick10" value="10" />
+              <label for="quick10">Tízes szorzó</label>
+            </div>
+            <div>
+              <button type="submit" class="sub4">Rögzít</button>
+              <button type="reset" class="reset4">Töröl</button>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="current_options">
+          <legend>Választott beállítások</legend>
+          <div>
+            <p>Kiválasztott feladattípusok:</p>
+            <p id="op_disp1">Nincs kiválasztva</p>
+          </div>
+          <div>
+            <p>Feladatok megjelenési rendje:</p>
+            <p id="op_disp2">Nincs kiválasztva</p>
+          </div>
+          <div>
+            <p>A kiválasztott gyakorlási mód:</p>
+            <p id="op_disp3">Nincs kiválasztva</p>
+          </div>
+          <div>
+            <p>Összeadás illetve kivonás eredménye ezen értékek között:</p>
+            <p id="op_disp4">Nincs kiválasztva</p>
+          </div>
+          <div>
+            <p>Szorzáshoz illetve osztáshoz kiválaszott szorzótáblák:</p>
+            <p id="op_disp5">Nincs kiválasztva</p>
+          </div>
+          <section>
+            <button type="submit" class="go">Indulás!</button>
+            <!-- <button type="submit" class="shortcut">Gy.beáll.</button> -->
+          </section>
+        </fieldset>
+      </section>
+    </section>
+    <section class="copyright">
+      <p>
+        Készítette
+        <a href="https://www.facebook.com/attila.fekete.7359" target="_blank">Fekete Attila</a> -
+        2023 - verzió: 1.101. Utolsó frissítés: 2023.11.02.
+      </p>
+    </section>
+    <script src="mechanism.js"></script>
+  </body>
+</html>
